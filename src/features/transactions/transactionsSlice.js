@@ -1,46 +1,46 @@
 // transactionsSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
-const transactionsSlice = createSlice({
+const initialState = {
+  transactions: [],
+};
+
+export const transactionsSlice = createSlice({
   name: "transactions",
-  initialState: {
-    transactions: [],
-    chartData: {},
-  },
+  initialState,
   reducers: {
     setTransactions: (state, action) => {
       state.transactions = action.payload;
     },
     addTransaction: (state, action) => {
-      const newTransaction = action.payload;
-      state.transactions.push(newTransaction);
-
-      switch (newTransaction.type) {
-        case "income":
-          state.chartData.totalIncome += newTransaction.amount;
-          break;
-        case "expense":
-          state.chartData.totalExpense += newTransaction.amount;
-          break;
-        case "investment":
-          state.chartData.totalInvestment += newTransaction.amount;
-          break;
-        default:
-          break;
-      }
-
-      state.chartData.totalAmount += newTransaction.amount;
+      state.transactions.push(action.payload);
     },
-    setChartData: (state, action) => {
-      state.chartData = action.payload;
+    removeTransaction: (state, action) => {
+      state.transactions = state.transactions.filter(
+        (transaction) => transaction._id !== action.payload
+      );
+    },
+    // transactionsSlice.js
+    updateTransaction: (state, action) => {
+      console.log("Updating transaction:", action.payload);
+      const updatedIndex = state.transactions.findIndex(
+        (transaction) => transaction._id === action.payload._id
+      );
+      if (updatedIndex !== -1) {
+        state.transactions[updatedIndex] = action.payload;
+      }
+      console.log("Updated state:", state.transactions);
     },
   },
 });
 
-export const { setTransactions, addTransaction, setChartData } =
-  transactionsSlice.actions;
+export const {
+  setTransactions,
+  addTransaction,
+  removeTransaction,
+  updateTransaction,
+} = transactionsSlice.actions;
 
 export const selectTransactions = (state) => state.transactions.transactions;
-export const selectChartData = (state) => state.transactions.chartData;
 
 export default transactionsSlice.reducer;
