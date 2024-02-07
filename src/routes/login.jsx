@@ -27,10 +27,8 @@ function Login(props){
     .catch(err => {
         console.log(err)
         if (err.response && err.response.status === 401) {
-          // Password incorrect
           setErrorMessage("Incorrect password. Please try again.");
         } else {
-          // Other errors
           setErrorMessage("An error occurred. Please try again later.");
         }
     })
@@ -39,15 +37,7 @@ function Login(props){
 
 return(
     <main>
-        {/* <section className="h-full flex flex-col justify-center items-center">
-            <form className="flex flex-col" onSubmit={handleLogin}>
-                <label htmlFor="email">Email</label>
-                <input className="border border-violet-500 mt-2 mb-4" type="email" name="email" id="email" />
-                <label htmlFor="password">Password</label>
-                <input className="border border-violet-500 mt-2 mb-4" type="password" name="password" id="password" />
-                <button type="submit" className="py-1 px-4 bg-violet-700 text-white rounded-sm" >Login</button>
-            </form>
-        </section> */}
+        
 
 <section className="bg-gray-50 min-h-screen flex items-center justify-center">
       

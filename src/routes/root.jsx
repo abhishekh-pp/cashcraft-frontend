@@ -1,13 +1,24 @@
 import React, { useState } from "react";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { IoMdMenu } from "react-icons/io";
 
 function Root(props) {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
+
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    setIsLoggedIn(false);
+    navigate('/login');
+  };
+
+  const isTrackerPage = location.pathname === '/tracker';
 
   return (
     <>
@@ -23,17 +34,28 @@ function Root(props) {
               <Link to={'/'}>Home</Link>
             </li>
             <li>
-              <Link to={'/blank'}>Blank</Link>
+              {isLoggedIn ? (
+                <Link to={'/tracker'}>Track</Link>
+              ) : (
+                <Link to={'/login'}>Track</Link>
+              )}
             </li>
             <li>
               <Link to={'/signup'}>Sign up</Link>
             </li>
-           
-            <li>
-              <Link to={'/login'} className="block px-6 py-2 text-white bg-[#002D74] rounded-xl hover:scale-105 duration-300">
-                Login
-              </Link>
-            </li>
+            {isLoggedIn ? (
+              <li>
+                <button onClick={handleLogout} className="block px-6 py-2 text-white bg-[#002D74] rounded-xl hover:scale-105 duration-300">
+                  Logout
+                </button>
+              </li>
+            ) : (
+              <li>
+                <Link to={'/login'} className="block px-6 py-2 text-white bg-[#002D74] rounded-xl hover:scale-105 duration-300">
+                  Login
+                </Link>
+              </li>
+            )}
           </ul>
         </nav>
         <div className="md:hidden">
@@ -54,6 +76,3 @@ function Root(props) {
 }
 
 export default Root;
-
-
-

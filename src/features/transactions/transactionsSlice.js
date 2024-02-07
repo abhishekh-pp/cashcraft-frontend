@@ -1,4 +1,3 @@
-// transactionsSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -20,7 +19,6 @@ export const transactionsSlice = createSlice({
         (transaction) => transaction._id !== action.payload
       );
     },
-    // transactionsSlice.js
     updateTransaction: (state, action) => {
       console.log("Updating transaction:", action.payload);
       const updatedIndex = state.transactions.findIndex(

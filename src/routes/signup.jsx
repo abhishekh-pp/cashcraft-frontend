@@ -32,17 +32,7 @@ function SignUp(props){
 
 return(
     <main className="h-screen">
-        {/* <section className="h-full flex flex-col justify-center items-center">
-            <form className="flex flex-col" onSubmit={handleSignUp}>
-            <label htmlFor="name">Name</label>
-                <input className="border border-violet-500 mt-2 mb-4" type="text" name="name" id="name" />
-                <label htmlFor="email">Email</label>
-                <input className="border border-violet-500 mt-2 mb-4" type="email" name="email" id="email" />  
-                <label htmlFor="password">Password</label>
-                <input className="border border-violet-500 mt-2 mb-4" type="password" name="password" id="password" />
-                <button type="submit" className="py-1 px-4 bg-violet-700 text-white rounded-sm" >SignUp</button>
-            </form>
-        </section> */}
+        
 
 <section className="bg-gray-50 min-h-screen flex items-center justify-center">
       
