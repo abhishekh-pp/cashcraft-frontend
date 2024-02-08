@@ -11,12 +11,18 @@ import Root from "./routes/root";
 import Login from './routes/login.jsx';
 import SignUp from './routes/signup.jsx';
 import TransactionPage from './routes/transactionPage.jsx';
+import Home from './routes/home.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root/>,
     children: [
+      {
+        path:"",
+        element: <Home/>
+
+      },
       {
         path:"/login",
         element: <Login/>
