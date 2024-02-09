@@ -1,24 +1,25 @@
 import React, { useState } from "react";
-import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { IoMdMenu } from "react-icons/io";
+import { useSelector, useDispatch } from "react-redux";
+import { removeUser } from "../features/auth/authSlice";
 
 function Root(props) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const user = useSelector(state => state.auth.user);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const location = useLocation();
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('isLoggedIn');
-    setIsLoggedIn(false);
+    dispatch(removeUser());
     navigate('/login');
   };
 
-  const isTrackerPage = location.pathname === '/tracker';
+  const trackLink = user ? '/tracker' : '/login'; // Destination based on user login status
 
   return (
     <>
@@ -34,16 +35,14 @@ function Root(props) {
               <Link to={'/'}>Home</Link>
             </li>
             <li>
-              {isLoggedIn ? (
-                <Link to={'/tracker'}>Track</Link>
-              ) : (
-                <Link to={'/login'}>Track</Link>
-              )}
+              <Link to={trackLink}>Track</Link>
             </li>
-            <li>
-              <Link to={'/signup'}>Sign up</Link>
-            </li>
-            {isLoggedIn ? (
+            {!user && (
+  <li>
+    <Link to={'/singup'}>SignUp</Link>
+  </li>
+)}
+            {user ? (
               <li>
                 <button onClick={handleLogout} className="block px-6 py-2 text-white bg-[#002D74] rounded-xl hover:scale-105 duration-300">
                   Logout
@@ -63,7 +62,7 @@ function Root(props) {
             onClick={toggleMobileMenu}
             className="p-2 text-gray-800 focus:outline-none"
           >
-          <IoMdMenu />
+            <IoMdMenu />
           </button>
         </div>
       </header>

@@ -5,7 +5,6 @@ import img from '../assets/cashpot.jpg'
 const Home = () => {
   return (
     <div className=" h-screen bg-[#ddeaff] py-12 px-4 text-center flex flex-col justify-center">
-            {/* <img src="finance_image.jpg" alt="Finance Tracking App" className="mx-auto mb-8 max-w-full h-auto" /> */}
             <h1 className="text-4xl font-bold mb-4">Welcome to CashCraft</h1>
             <p className="text-lg mb-6">Effortlessly manage your finances with our intuitive app.</p>
             <div className=" flex flex-row justify-center gap-4">

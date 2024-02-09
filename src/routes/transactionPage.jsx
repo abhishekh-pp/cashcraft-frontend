@@ -90,26 +90,26 @@ const TransactionPage = () => {
   };
 
   // Calculate total amount for each category
-  const incomeAmount = transactions
-    .filter(transaction => transaction.type === 'income')
-    .reduce((total, transaction) => total + parseFloat(transaction.amount), 0);
+const incomeAmount = transactions
+.filter(transaction => transaction.type === 'income')
+.reduce((total, transaction) => total + parseFloat(transaction.amount), 0);
 
-  const expenseAmount = transactions
-    .filter(transaction => transaction.type === 'expense')
-    .reduce((total, transaction) => total + parseFloat(transaction.amount), 0);
+const expenseAmount = transactions
+.filter(transaction => transaction.type === 'expense')
+.reduce((total, transaction) => total + parseFloat(transaction.amount), 0);
 
-  const investmentAmount = transactions
-    .filter(transaction => transaction.type === 'investment')
-    .reduce((total, transaction) => total + parseFloat(transaction.amount), 0);
+const investmentAmount = transactions
+.filter(transaction => transaction.type === 'investment')
+.reduce((total, transaction) => total + parseFloat(transaction.amount), 0);
 
-  const data = [
-    { title: 'Income', value: incomeAmount, color: '#8569f1' },
-    { title: 'Expense', value: expenseAmount, color: '#658ff1' },
-    { title: 'Investment', value: investmentAmount, color: '#a465f1' },
-  ];
+const data = [
+{ title: 'Income', value: incomeAmount, color: '#8569f1' },
+{ title: 'Expense', value: expenseAmount, color: '#658ff1' },
+{ title: 'Investment', value: investmentAmount, color: '#a465f1' },
+];
 
-  // Filter out categories with zero amount
-  const filteredData = data.filter(item => item.value !== 0);
+// Filter out categories with zero amount
+const filteredData = data.filter(item => item.value !== 0);
 
   return (
     <div className="container  mt-8">
@@ -183,19 +183,19 @@ const TransactionPage = () => {
         </form>
 
         {filteredData.length > 0 && (
-          <div className="mt-8 lg:mt-0 w-80 ">
-            <PieChart
-              data={filteredData}
-              label={(data) => `${Math.round(data.dataEntry.percentage)}%`}
-              labelStyle={{ fontSize: '5px', fill: '#fff' }}
-              lengthAngle={360}
-              animate={true}
-              animationDuration={500}
-              center={[50, 50]}
-            />
-          </div>
-        )}
-      </div>
+        <div className="mt-8 lg:mt-0 w-80 ">
+          <PieChart
+            data={filteredData}
+            label={({ dataEntry }) => `${dataEntry.title} (${Math.round(dataEntry.percentage)}%)`}
+            labelStyle={{ fontSize: '5px', fill: '#fff' }}
+            lengthAngle={360}
+            animate={true}
+            animationDuration={500}
+            center={[50, 50]}
+          />
+        </div>
+      )}
+    </div>
 
       <div className='lg:mx-40 lg:my-12 mx-8'>
         <h2 className="text-xl font-bold mt-8 mb-4 ">Transactions</h2>

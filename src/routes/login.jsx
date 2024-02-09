@@ -4,7 +4,7 @@ import React, {useState} from "react";
 import { useDispatch } from "react-redux";
 import { addUser } from "../features/auth/authSlice";
 import { Link, useNavigate } from "react-router-dom";
-import cashpot from "../assets/cashpot.jpg"
+import img from "../assets/loginimg.jpg"
 
 const dbUrl = "http://localhost:3000"
 
@@ -67,7 +67,7 @@ return(
 
         
         <div className="md:block hidden w-1/2">
-          <img className="rounded-2xl" src={cashpot} alt="Login" />
+          <img className="rounded-2xl" src={img} alt="Login" />
         </div>
       </div>
     </section>
