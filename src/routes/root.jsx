@@ -68,7 +68,7 @@ function Root(props) {
       </header>
       <Outlet />
       <footer className="flex flex-col md:flex-row justify-center items-center bg-black text-white p-4">
-        <span>&copy; CashCraft 2023</span>
+        <span>&copy; CashCraft 2024</span>
       </footer>
     </>
   );

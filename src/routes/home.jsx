@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import img from '../assets/cashpot.jpg'
 
 const Home = () => {
   return (
@@ -12,8 +11,6 @@ const Home = () => {
             <Link to={'/login'} className="bg-white rounded-xl text-black shadow-md py-2 px-6 hover:scale-105 duration-300">Login</Link>
             </div>
         </div>
-
-
   );
 };
 
