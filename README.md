@@ -20,7 +20,7 @@ Follow these steps to set up the Finance Tracking App Frontend on your local mac
 git clone https://github.com/abhishekh-pp/cashcraft-frontend
 
 2.Install Dependencies:
-cd finance-tracking-app-frontend
+cd cashcraft-frontend
 npm install
 
 3.Configure Environment Variables:
@@ -47,4 +47,3 @@ We welcome contributions from the community to help improve our finance tracking
 
 5.Create a new Pull Request.
 
-Please ensure your code follows our coding guidelines and include relevant tests if applicable.
