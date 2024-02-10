@@ -9,14 +9,16 @@ Our CashCraft - finance tracking app frontend is designed to provide users with 
 Features:
 
 Expense Tracking: Easily record and categorize expenses to keep track of spending habits.
+
 Data Visualization: Visualize your financial data through charts and graphs for better understanding.
+
 Secure Authentication: Ensure the security of your financial information with robust authentication measures.
 
 Setup:
 
 Follow these steps to set up the Finance Tracking App Frontend on your local machine:
 
-1. Clone the Repository:
+1.Clone the Repository:
 git clone https://github.com/abhishekh-pp/cashcraft-frontend
 
 2.Install Dependencies:
@@ -28,6 +30,7 @@ Create a `.env` file in the root directory and add the necessary environment var
 
 4.Run the Application:
 npm start
+
 This will start the development server and launch the app in your default web browser.
 
 5.Access the App:
